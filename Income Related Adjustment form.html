@@ -18,6 +18,8 @@
   <link href="./assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <script src="javascript/incomeAdjustments.js"></script>
+
 </head>
 
 <body class="register-page">
@@ -84,8 +86,14 @@
     </div>
   </nav>
   <!-- End Navbar -->
+<<<<<<< Updated upstream
   <div class="wrapper">
     <div class="page-header" >
+=======
+  <div class="wrapper" id="blur">
+    <div class="page-header">
+      <div class="page-header-image"></div>
+>>>>>>> Stashed changes
       <div class="content">
         <div class="container">
           <div class="row">
@@ -94,17 +102,17 @@
               <div id="square8" class="square square-8"></div>
               <div class="card card-register">
                 <div class="card-header">
-                  <h1 class="title">Income Related Adjustment</h1>
+                  <h1 class="title">Income Related Adjustments</h1>
                 </div>
                 <div class="card-body">
-                  <form class="form">
+                  <form class="form" id="form">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Income Name">
+                      <input type="text" class="form-control" placeholder="Income Name" id="I_name">
                     </div>
                     
                     <div class="input-group">
@@ -121,7 +129,7 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Received Amount" class="form-control">
+                      <input type="text" placeholder="Received Amount" class="form-control" id="I_amount">
                     </div>
 
 
@@ -131,16 +139,15 @@
                           <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Monthly Receivable Amount" class="form-control">
+                      <input type="text" placeholder="Monthly Receivable Amount" class="form-control" id="I_Mamount">
                     </div>
                   </form>
                 </div>
 
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2"  onlclick="t()" onclick="return calculate(form)">
                   Calculate
                 </button>
                 <br>
-
                 <br>
               </div>
             </div>
@@ -180,9 +187,11 @@
       </div>
     </footer>
   </div>
+  
 
         <!-- Form Modal -->
-        <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="backdrop-filter: blur(10px);";>
+          
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header justify-content-center">
@@ -190,33 +199,63 @@
                   <i class="tim-icons icon-simple-remove text-white"></i>
                 </button>
                 <div class="text-muted text-center ml-auto mr-auto">
-                  <h3 class="mb-0">Sign in with</h3>
+                  <h3 class="mb-0">Income Related Adjustments</h3>
                 </div>
               </div>
               <div class="modal-body">
-                <div class="btn-wrapper text-center">
+                <!-- <div class="btn-wrapper text-center">
                   <a href="#" class="btn btn-neutral btn-icon">
                     <img src="assets/img/github.svg">
                   </a>
                   <a href="#" class="btn btn-neutral btn-icon">
                     <img src="assets/img/google.svg">
                   </a>
-                </div>
-                <div class="text-center text-muted mb-4 mt-3">
+                </div> -->
+                <!-- <div class="text-center text-muted mb-4 mt-3">
                   <small>Or sign in with credentials</small>
-                </div>
+                </div> -->
                 <form role="form">
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
+                      <!-- <div class="input-group-prepend">
                         <span class="input-group-text">
                           <i class="tim-icons icon-email-85"></i>
                         </span>
-                      </div>
-                      <input class="form-control" placeholder="Email" type="email">
+                      </div> -->
                     </div>
+                    <div id="iout1"></div>
+                    <div id="iout2"></div><br>
+
+                    <table style="border:1px solid white;">
+                      <tr style="background-color:white;">
+                        <td style="color:black;font-weight: bold;">Profit & Loss Statement:</td>
+                        <th></th>
+                      </tr>
+                      <tr colspan="2">
+                        <td style="font-style: italic;font-weight: bold;">Other Income</td>
+                      </tr>
+                      <tr> 
+                        <td id="iout3_1">
+                        <td id="iout3_2" style="font-weight: bold;"></td>
+                      </tr>
+                      </table><br>
+                      <table style="border:1px solid white;">
+                        <tr style="background-color:white;">
+                          <td style="color:black;font-weight: bold;">Financial Statement:</td>
+                          <td></td>
+                        </tr>
+                        <tr colspan="2">
+                          <td style="font-style: italic;font-weight: bold;" id="iout4_1"></td>
+                        </tr>
+                         <tr> 
+                           <td id="iout4_2">&nbsp;</td>
+                           <td id="iout4_3" style="font-weight: bold;"></td>
+                        </tr>
+                        </table><br>
+                    
+                 
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
@@ -232,10 +271,10 @@
                       <span class="form-check-sign"></span>
                       Remember me!
                     </label>
-                  </div>
-                  <div class="text-center">
+                  </div> -->
+                  <!-- <div class="text-center">
                     <button type="button" class="btn btn-primary my-4">Sign in</button>
-                  </div>
+                  </div> -->
                 </form>
               </div>
             </div>
@@ -277,6 +316,7 @@
        }
      }
    </script>
+
 </body>
 
 </html>
