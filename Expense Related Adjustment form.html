@@ -18,6 +18,7 @@
   <link href="./assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <script src="javascript/expenseAdjustments.js"></script>
 </head>
 
 <body class="register-page">
@@ -98,14 +99,14 @@
                   <h1 class="title">Expense Related Adjustment</h1>
                 </div>
                 <div class="card-body">
-                  <form class="form">
+                  <form class="form" id="form">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Expense Name">
+                      <input type="text" class="form-control" placeholder="Expense Name" id="E_name">
                     </div>
                     
                     <div class="input-group">
@@ -122,7 +123,7 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Paid Amount" class="form-control">
+                      <input type="text" placeholder="Paid Amount" class="form-control" id="E_amount">
                     </div>
 
 
@@ -132,11 +133,11 @@
                           <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Monthly Payable Amount" class="form-control">
+                      <input type="text" placeholder="Monthly Payable Amount" class="form-control" id="E_Mamount">
                     </div>
                   </form>
                 </div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2" onclick="return calculate(form)">
                   Calculate
                 </button>
                 <br>
@@ -182,7 +183,7 @@
 
 
      <!-- Form Modal -->
-     <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="backdrop-filter: blur(10px);">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header justify-content-center">
@@ -190,52 +191,44 @@
               <i class="tim-icons icon-simple-remove text-white"></i>
             </button>
             <div class="text-muted text-center ml-auto mr-auto">
-              <h3 class="mb-0">Sign in with</h3>
+              <h3 class="mb-0">Expense Related Adjustment</h3>
             </div>
           </div>
           <div class="modal-body">
-            <div class="btn-wrapper text-center">
-              <a href="#" class="btn btn-neutral btn-icon">
-                <img src="assets/img/github.svg">
-              </a>
-              <a href="#" class="btn btn-neutral btn-icon">
-                <img src="assets/img/google.svg">
-              </a>
-            </div>
-            <div class="text-center text-muted mb-4 mt-3">
-              <small>Or sign in with credentials</small>
-            </div>
+          
             <form role="form">
               <div class="form-group mb-3">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="tim-icons icon-email-85"></i>
-                    </span>
-                  </div>
-                  <input class="form-control" placeholder="Email" type="email">
+                
+                  <div id="eout1"></div>
+                    <div id="eout2"></div><br>
+
+                    <table style="border:1px solid white;">
+                      <tr style="background-color:white;">
+                        <td style="color:black;font-weight: bold;">Profit & Loss Statement:</td>
+                        <th></th>
+                      </tr>
+                      <tr colspan="2">
+                        <td style="font-style: italic;font-weight: bold;">Expenses</td>
+                      </tr>
+                      <tr> 
+                        <td id="eout3_1">
+                        <td id="eout3_2" style="font-weight: bold;"></td>
+                      </tr>
+                    </table><br>
+                      <table style="border:1px solid white;">
+                        <tr style="background-color:white;">
+                          <td style="color:black;font-weight: bold;">Statement of Financial Position:</td>
+                          <td></td>
+                        </tr>
+                        <tr colspan="2">
+                          <td style="font-style: italic;font-weight: bold;" id="eout4_1"></td>
+                        </tr>
+                         <tr> 
+                           <td id="eout4_2">&nbsp;</td>
+                           <td id="eout4_3" style="font-weight: bold;"></td>
+                        </tr>
+                        </table><br>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="tim-icons icon-key-25"></i>
-                    </span>
-                  </div>
-                  <input class="form-control" placeholder="Password" type="password">
-                </div>
-              </div>
-              <div class="form-check mt-3">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" checked>
-                  <span class="form-check-sign"></span>
-                  Remember me!
-                </label>
-              </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-primary my-4">Sign in</button>
-              </div>
             </form>
           </div>
         </div>
