@@ -1,34 +1,67 @@
 
 function calculate(form) {
-    var incomeName=document.forms["form"]["I_name"].value;
-    var incomeAmount=document.forms["form"]["I_amount"].value;
-    var incomeMonthAmount=document.forms["form"]["I_Mamount"].value;
-    var I_annualAmount=incomeMonthAmount*12;
-    var Iremaining=I_annualAmount-incomeAmount;
+    var debtorName=document.forms["form"]["D_name"].value;
+    var dAmount=document.forms["form"]["D_amount"].value;
+    var pRate=document.forms["form"]["P_rate"].value;
+    var pAmount=document.forms["form"]["P_amount"].value;
+    var Open=document.forms["form"]["DRadios"].value;
+    // var NotOpenB=document.forms["form"]["DRadios2"].value;
+    var provision=(dAmount*pRate)/100;
+    var proB=pAmount-provision;
+    //var Iremaining=I_annualAmount-incomeAmount;
   
     
-        document.getElementById('iout1').innerHTML = "Income Name :   "+incomeName;
+        document.getElementById('dout1').innerHTML = "Debtor Name :   "+debtorName;
     
-    if (Iremaining>0){
-        //accrued income
-        document.getElementById('iout2').innerHTML = "Adjustment Type :   Income Receivable";
-        document.getElementById('iout3_1').innerHTML = incomeName+" income("+incomeAmount+"+"+Iremaining+") :  ";
-        document.getElementById('iout3_2').innerHTML ="Rs."+I_annualAmount;
-        document.getElementById('iout4_1').innerHTML = "Current Asset";
-        document.getElementById('iout4_2').innerHTML =incomeName+" income receivable :  ";
-        document.getElementById('iout4_3').innerHTML ="Rs."+Iremaining;
-    }else if(Iremaining<0){
-        //prepaid income
-        var IIremaining=-Iremaining;
-        document.getElementById('iout2').innerHTML = "Adjustment Type  : Income in advance (Prepaid income)";
-        document.getElementById('iout3_1').innerHTML = incomeName+" income("+incomeAmount+"-"+IIremaining+") :  ";
-        document.getElementById('iout3_2').innerHTML ="Rs."+I_annualAmount;
-        document.getElementById('iout4_1').innerHTML = "Current Liabilities";
-        document.getElementById('iout4_2').innerHTML = " Prepaid "+incomeName+" Income: ";
-        document.getElementById('iout4_3').innerHTML ="Rs."+IIremaining;
-    }else{
+    if (Open=="noB"){
+        //No open balance
+       
+        document.getElementById('dout2_1').innerHTML = " Provision for doubtful debt :  ";
+        document.getElementById('dout2_2').innerHTML ="Rs."+provision;
+        
+        document.getElementById('dout3_1').innerHTML =" Debtor :  ";
+        document.getElementById('dout3_2').innerHTML =dAmount;
+        document.getElementById('dout3_3').innerHTML =" Provision for doubtful debt :  ";
+        document.getElementById('dout3_4').innerHTML ="("+provision+")";
+        document.getElementById('dout3_5').innerHTML =dAmount-provision;
+    
+    }else if (Open=="B"){
+       //with open balance
+        if(proB>0){
+            //when opening balance greater than
+        document.getElementById('dout2_1').innerHTML = " Over Provision :  ";
+        document.getElementById('dout2_2').innerHTML ="Rs. ("+proB+")";
+   
+        document.getElementById('dout3_1').innerHTML =" Debtor :  ";
+        document.getElementById('dout3_2').innerHTML =dAmount;
+        document.getElementById('dout3_3').innerHTML =" Provision for doubtful debt :  ";
+        document.getElementById('dout3_4').innerHTML ="("+provision+")";
+        document.getElementById('dout3_5').innerHTML =dAmount-provision;
+        }else if (proB<0){
+            //when opening balance less than
+            var PProB=-proB;
+        document.getElementById('dout2_1').innerHTML = " Under Provision  :  ";
+        document.getElementById('dout2_2').innerHTML ="Rs."+PProB;
+   
+        document.getElementById('dout3_1').innerHTML =" Debtor :  ";
+        document.getElementById('dout3_2').innerHTML =dAmount;
+        document.getElementById('dout3_3').innerHTML =" Provision for doubtful debt :  ";
+        document.getElementById('dout3_4').innerHTML ="("+provision+")";
+        document.getElementById('dout3_5').innerHTML =dAmount-provision;
+        }else{
+            document.getElementById('dout2_1').innerHTML = " Provision for doubtful debt :  ";
+            document.getElementById('dout2_2').innerHTML ="Rs."+proB;
+            
+            document.getElementById('dout3_1').innerHTML =" Debtor :  ";
+            document.getElementById('dout3_2').innerHTML =dAmount;
+            document.getElementById('dout3_3').innerHTML =" Provision for doubtful debt :  ";
+            document.getElementById('dout3_4').innerHTML ="("+provision+")";
+            document.getElementById('dout3_5').innerHTML =dAmount-provision;
+        }
+    }
+    else{
         //no adjustments
-        document.getElementById('iout2').innerHTML = "         No adjustments          ";
+        document.getElementById('dout2').innerHTML = "         No adjustments          ";
     }
    
 }

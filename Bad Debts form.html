@@ -99,14 +99,14 @@
                   <h1 class="title">Bad Debts</h1>
                 </div>
                 <div class="card-body">
-                  <form class="form">
+                  <form class="form" id="form">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Debtor Name">
+                      <input type="text" class="form-control" placeholder="Debtor Name" id="D_name">
                     </div>
                     
                     <div class="input-group">
@@ -115,7 +115,7 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Amount" class="form-control">
+                      <input type="text" placeholder="Amount" class="form-control" id="D_amount">
                     </div>
 
                     <div class="input-group">
@@ -126,7 +126,7 @@
                           "></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Provision Rate" class="form-control">
+                      <input type="text" placeholder="Provision Rate" class="form-control" id="P_rate">
                     </div>
 
 
@@ -141,17 +141,23 @@
                     <p class="text-muted" style="margin-left:0.5rem;">Did you have Opening Balance</p>
                     <div class="form-check form-check-radio" style="margin: 0.5rem;">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="DRadios" value="B" onclick="fun1()" >
                         <span class="form-check-sign"></span>
                         Yes
                       </label>
+                     
                     </div>
                     <div class="form-check form-check-radio" style="margin: 0.5rem;">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="DRadios" value="noB" >
                         <span class="form-check-sign"></span>
                        No
                       </label>
+                      <script>
+                        function fun1(){
+                          document.getElementById("P_amount").disabled=false;
+                        }
+                      </script>
                     </div>
                   
                     <div class="input-group">
@@ -160,11 +166,11 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Amount" class="form-control">
+                      <input type="text" placeholder="Amount" class="form-control" id="P_amount" disabled>
                     </div>
                   </form>
                 </div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2"  onclick="return calculate(form)">
                   Calculate
                 </button>
                 <br>
@@ -209,7 +215,7 @@
 
 
      <!-- Form Modal -->
-     <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="backdrop-filter: blur(10px);">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header justify-content-center">
@@ -217,53 +223,58 @@
               <i class="tim-icons icon-simple-remove text-white"></i>
             </button>
             <div class="text-muted text-center ml-auto mr-auto">
-              <h3 class="mb-0">Sign in with</h3>
+              <h3 class="mb-0">Bad Debts</h3>
             </div>
           </div>
           <div class="modal-body">
-            <div class="btn-wrapper text-center">
-              <a href="#" class="btn btn-neutral btn-icon">
-                <img src="assets/img/github.svg">
-              </a>
-              <a href="#" class="btn btn-neutral btn-icon">
-                <img src="assets/img/google.svg">
-              </a>
-            </div>
-            <div class="text-center text-muted mb-4 mt-3">
-              <small>Or sign in with credentials</small>
-            </div>
             <form role="form">
               <div class="form-group mb-3">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="tim-icons icon-email-85"></i>
-                    </span>
-                  </div>
-                  <input class="form-control" placeholder="Email" type="email">
-                </div>
+              
+                <div id="dout1"></div>
+                <div id="dout2"></div>
+                <br>
+
+                <table style="border:1px solid white;">
+                  <tr style="background-color:white;">
+                    <td style="color:black;font-weight: bold;">Profit & Loss Statement:</td>
+                    <th></th>
+                  </tr>
+                  <tr colspan="2">
+                    <td style="font-style: italic;font-weight: bold;">Selling & Distributive Expenses</td>
+                  </tr>
+                  <tr> 
+                    <td id="dout2_1">
+                    <td id="dout2_2" style="font-weight: bold;"></td>
+                  </tr>
+                  </table><br>
+                  <table style="border:1px solid white;">
+                    <tr style="background-color:white;">
+                      <td style="color:black;font-weight: bold;">Statement of Financial Position:</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td style="font-style: italic;font-weight: bold;" >Current Assets</td>
+                      <td style="text-align:left;">Rs.</td>
+                    </tr>
+                     <tr> 
+                       <td id="dout3_1">&nbsp;</td>
+                       <td id="dout3_2" style="font-weight: bold;"></td>
+                    </tr>
+                    <tr> 
+                      <td id="dout3_3">&nbsp;</td>
+                      <td id="dout3_4" style="font-weight: bold;border-bottom: 1px solid white;"></td>
+                   </tr>
+                   <tr> 
+                    <td></td>
+                    <td id="dout3_5" style="font-weight: bold;"></td>
+                 </tr>
+                    </table><br>
+                
+             
               </div>
-              <div class="form-group">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="tim-icons icon-key-25"></i>
-                    </span>
-                  </div>
-                  <input class="form-control" placeholder="Password" type="password">
-                </div>
-              </div>
-              <div class="form-check mt-3">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" checked>
-                  <span class="form-check-sign"></span>
-                  Remember me!
-                </label>
-              </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-primary my-4">Sign in</button>
-              </div>
+     
             </form>
+            
           </div>
         </div>
       </div>
