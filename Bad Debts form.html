@@ -106,8 +106,13 @@
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Debtor Name" id="D_name">
+                      <input type="text" class="form-control" placeholder="Debtor Name" id="D_name" onkeyup="row1Check()">
                     </div>
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="rowa"></p>
+                    </div>
+
                     
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -115,8 +120,13 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Amount" class="form-control" id="D_amount">
+                      <input type="text" placeholder="Amount" class="form-control" id="D_amount" onkeyup="row2Check()">
                     </div>
+
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="rowb"></p>
+                    </div>                    
 
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -126,8 +136,13 @@
                           "></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Provision Rate" class="form-control" id="P_rate">
+                      <input type="text" placeholder="Provision Rate" class="form-control" id="P_rate" onkeyup="row3Check()">
                     </div>
+
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="rowc"></p>
+                    </div>                    
 
 
                     <!-- <div class="input-group">

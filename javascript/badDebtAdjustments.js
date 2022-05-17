@@ -68,3 +68,46 @@ function calculate(form) {
 
 
 
+function row1Check(){
+    var row1Value=document.getElementById('D_name');
+    var letters = /^[A-Za-z]+$/;
+    if(row1Value.value.match(letters)){
+        document.getElementById('rowa').innerHTML="";
+       
+    }else{
+        document.getElementById('rowa').innerHTML="please enter letters!";
+        //document.getElementById('row1').innerHTML("");
+        
+    }
+    
+}
+
+
+function row2Check(){
+    var row2Value=document.getElementById('D_amount');
+    var numbers = /^[0-9]+$/;
+    if(row2Value.value.match(numbers)){
+        document.getElementById('rowb').innerHTML="";
+       
+    }else{
+        document.getElementById('rowb').innerHTML="please enter numbers!";
+        //document.getElementById('row1').innerHTML("");
+        
+    }
+    
+}
+
+
+function row3Check(){
+    var row3Value=document.getElementById('P_rate');
+    var numbers = /^[0-9]+$/;
+    if(row3Value.value.match(numbers)){
+        document.getElementById('rowc').innerHTML="";
+       
+    }else{
+        document.getElementById('rowc').innerHTML="please enter numbers!";
+        //document.getElementById('row1').innerHTML("");
+        
+    }
+    
+}

@@ -106,9 +106,14 @@
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Expense Name" id="E_name">
+                      <input type="text" class="form-control" placeholder="Expense Name" id="E_name" onkeyup="row1Check()">
                     </div>
                     
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="row5"></p>
+                    </div>
+
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -126,6 +131,10 @@
                       <input type="text" placeholder="Paid Amount" class="form-control" id="E_amount" onkeyup="isEmpty()">
                     </div>
 
+                     <!--Added constraints-->
+                     <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="row8"></p>
+                    </div>
 
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -133,10 +142,16 @@
                           <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Monthly Payable Amount" class="form-control" id="E_Mamount" disabled>
+                      <input type="text" placeholder="Monthly Payable Amount" class="form-control" id="E_Mamount" onkeyup="row4Check()" disabled>
                     </div>
                   </form>
                 </div>
+
+               <!--Added constraints-->
+                <div style="height:20px;">
+                   <p style="margin-left:70px;font-size: 11px;color: #FF00FF;font-weight:600" id="row9"></p>
+                </div>
+                
                 <button class="btn btn-success" data-toggle="modal" data-target="#myModal2" onclick="return calculate(form)">
                   Calculate
                 </button>
