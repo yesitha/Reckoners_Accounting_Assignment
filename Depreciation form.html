@@ -18,7 +18,7 @@
   <link href="./assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
-  <script src="javascript/depreciationAdjustments.js"></script>
+  <script src="javascript/depreciationAdjustment.js"></script>
 </head>
 
 <body class="register-page">
@@ -115,7 +115,7 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Value" class="form-control" id="A_value">
+                      <input type="text" placeholder="Asset value" class="form-control" id="A_value">
                     </div>
                     
                     <div class="input-group">
@@ -124,7 +124,7 @@
                           <i class="tim-icons icon-calendar-60"></i>
                         </div>
                       </div>
-                      <input type="text" id="datepicker" class="form-control datepicker" placeholder="Purchase Date" data-datepicker-color="primary">
+                      <input type="text" id="datepicker1" class="form-control datepicker" placeholder="Purchase Date" data-datepicker-color="primary">
                     </div>
 
                     <div class="input-group">
@@ -133,7 +133,7 @@
                           <i class="tim-icons icon-calendar-60"></i>
                         </div>
                       </div>
-                      <input type="text" id="datepicker" class="form-control datepicker" placeholder="Evaluate Date" data-datepicker-color="primary">
+                      <input type="text" id="datepicker2" class="form-control datepicker" placeholder="Evaluate Date" >
                     </div>
 
                     <div class="input-group">
@@ -144,7 +144,14 @@
                       </div>
                       <input type="text" class="form-control" placeholder="Useful Life (Years)" id="usefulLife">
                     </div>
-
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="tim-icons icon-coins"></i>
+                        </div>
+                      </div>
+                      <input type="text" placeholder="Residual value" class="form-control" id="Rvv">
+                    </div>
 
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -152,20 +159,20 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Residual Value" class="form-control" id="residual">
+                      <input type="text" placeholder="Depreciation rate for the year" class="form-control" id="dyear">
                     </div>
 
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
                           <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
                       </div>
                       <input type="text" placeholder="Monthly Receivable Amount" class="form-control" id="monthly">
-                    </div>
+                    </div> -->
 
 
-                    <p class="text-muted" style="margin-left:0.5rem;">Depreciation Method</p>
+                    <!-- <p class="text-muted" style="margin-left:0.5rem;">Depreciation Method</p>
                     <div class="form-check form-check-radio" style="margin: 0.5rem;">
                       <label class="form-check-label">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="Radios1" value="linr" checked>
@@ -179,14 +186,14 @@
                         <span class="form-check-sign"></span>
                        Reducing Balance Basis
                       </label>
-                    </div>
+                    </div> -->
                   
                   
 
 
                   </form>
                 </div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2" onclick="return calculate(form)" style="backdrop-filter: blur(10px);">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2" onclick="return calculate(form)" >
                   Calculate
                 </button>
                 <br>
@@ -231,7 +238,7 @@
 
 
      <!-- Form Modal -->
-     <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal fade modal-black" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="backdrop-filter: blur(10px);">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header justify-content-center">
@@ -275,16 +282,20 @@
                       <td style="text-align:left;">Rs.</td>
                     </tr>
                      <tr> 
-                       <td id="Dout3_1">&nbsp;</td>
-                       <td id="Dout3_2" style="font-weight: bold;"></td>
+                       <td id="Dout3_1" style="font-weight: bold;">&nbsp;</td>
+                       <td></td>
+                    </tr>
+                    <tr>
+                      <td>Cost&nbsp;&nbsp;: </td>
+                      <td id="Dout3_2" style="font-weight: bold;"></td>
                     </tr>
                     <tr> 
-                      <td id="Dout3_3">&nbsp;</td>
-                      <td id="Dout3_4" style="font-weight: bold;border-bottom: 1px solid white;"></td>
+                      <td>Accumilated depreciation&nbsp;&nbsp;: </td>
+                      <td id="Dout3_3" style="font-weight: bold;border-bottom: 1px solid white;"></td>
                    </tr>
                    <tr> 
                     <td></td>
-                    <td id="Dout3_5" style="font-weight: bold;"></td>
+                    <td id="Dout3_4" style="font-weight: bold;"></td>
                  </tr>
                     </table><br>
                 
