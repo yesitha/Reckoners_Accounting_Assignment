@@ -107,9 +107,12 @@
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Income Name" id="I_name">
+                      <input type="text" class="form-control" placeholder="Income Name" id="I_name" onkeyup="row1Check()">
                     </div>
-                    
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: red;font-weight: 600;" id="row1"></p>
+                    </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -118,15 +121,22 @@
                       </div>
                       <input type="text" id="datepicker" class="form-control datepicker" placeholder="Received Date" data-datepicker-color="primary">
                     </div>
+                     <!--Added constraints-->
+                     <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px; color:red;font-weight:600"></p>
+                    </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Received Amount" class="form-control" id="I_amount">
+                      <input type="text" placeholder="Received Amount" class="form-control" id="I_amount" onkeyup="isEmpty()" >
                     </div>
-
+                     <!--Added constraints-->
+                     <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: red;font-weight:600" id="row2"></p>
+                    </div>
 
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -134,11 +144,14 @@
                           <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Monthly Receivable Amount" class="form-control" id="I_Mamount">
+                      <input type="text" placeholder="Monthly Receivable Amount" class="form-control" id="I_Mamount" onkeyup="row4Check()"  disabled >
                     </div>
                   </form>
                 </div>
-
+                 <!--Added constraints-->
+                 <div style="height:20px;">
+                  <p style="margin-left:54px;font-size: 11px;color: red;font-weight:600" id="row4"></p>
+                </div>
                 <button class="btn btn-success" data-toggle="modal" data-target="#myModal2"   onclick="return calculate(form)">
                   Calculate
                 </button>

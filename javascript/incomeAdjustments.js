@@ -33,5 +33,44 @@ function calculate(form) {
    
 }
 
-
-
+function isEmpty(){
+    var receivedAmount=document.getElementById('I_amount');
+    var numbers = /^[0-9]+$/;
+    if(receivedAmount!=" "){
+        document.getElementById('I_Mamount').removeAttribute("disabled");
+        if(receivedAmount.value.match(numbers)){
+            document.getElementById('row2').innerHTML="";  
+        }else{
+            document.getElementById('row2').innerHTML="Please enter numbers!";
+        }
+    }else{
+        document.getElementById('row2').innerHTML="xxx";
+        document.getElementById("I_Mamount").disabled = true;
+    }
+}
+function row1Check(){
+    var row1Value=document.getElementById('I_name');
+    var letters = /^[A-Za-z]+$/;
+    if(row1Value.value.match(letters)){
+        document.getElementById('row1').innerHTML="";
+       
+    }else{
+        document.getElementById('row1').innerHTML="please enter letters!";
+        //document.getElementById('row1').innerHTML("");
+        
+    }
+    
+}
+function row4Check(){
+    var row4Value=document.getElementById('I_Mamount');
+    var numbers = /^[0-9]+$/;
+    if(row4Value.value.match(numbers)){
+        document.getElementById('row4').innerHTML="";
+       
+    }else{
+        document.getElementById('row4').innerHTML="please enter numbers!";
+        //document.getElementById('row1').innerHTML("");
+        
+    }
+    
+}
