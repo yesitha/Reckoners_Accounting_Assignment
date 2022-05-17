@@ -33,5 +33,11 @@ function calculate(form) {
    
 }
 
+function isEmpty(){
+    var paidAmount=document.getElementById('E_amount');
+    if(paidAmount!=""){
+        document.getElementById('E_Mamount').removeAttribute("disabled");
+    }
+}
 
 
