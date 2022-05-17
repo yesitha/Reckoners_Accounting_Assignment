@@ -106,9 +106,15 @@
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Asset Name" id="A_name">
+                      <input type="text" class="form-control" placeholder="Asset Name" id="A_name" onclick="fun()">
+                    
                     </div>
-
+                    <small id="ss" style="color:pink;"></small>
+                    <script>
+                      function fun(){
+                        document.getElementById('ss').innerHTML = "### Land does not depreciated.(Don't enter land as asset name)";
+                      }
+                    </script>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -257,6 +263,8 @@
               
                 <div id="Dout1"></div>
                 <div id="Dout2"></div>
+                <div id="Dout3"></div>
+                
                 <br>
 
                 <table style="border:1px solid white;">
