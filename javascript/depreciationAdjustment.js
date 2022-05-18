@@ -6,12 +6,13 @@ function calculate(form) {
     var evaluateDate = document.forms["form"]["datepicker2"].value;
     var ULife = document.forms["form"]["usefulLife"].value;
     var residual = document.forms["form"]["Rvv"].value;
-
-    if (document.getElementById('Radios1').checked) {
-        var method = StraightLineBasis;
-    } else {
-        method = ReducingBalanceMethod;
-    }
+    var method=document.forms["form"]["Radios"].value;
+    document.write(method);
+    // if (document.getElementById('Radios1').checked) {
+    //     var method = "StraightLineBasis";
+    // } else {
+    //     method = "ReducingBalanceMethod";
+    // }
 
     var d1 = new Date(purchaseDate);
     // var day1=d1.getDate();
@@ -27,7 +28,7 @@ function calculate(form) {
 
     var ptime = Math.abs(d2 - d1);
     var pdays = Math.ceil(ptime / (1000 * 60 * 60 * 24));
-    if (method == StraightLineBasis) {
+    if (method == "linr") {
 
         var foraYear = (aValue - residual) / ULife;
         var foraMonth = foraYear / 12;
@@ -54,7 +55,7 @@ function calculate(form) {
 
             document.getElementById('Dout3_1').innerHTML = assetName;
            
-            document.querySelector("#Dout3_2").innerHTML = aValue;
+            document.getElementById("Dout3_2").innerHTML = aValue;
             document.getElementById('Dout3_3').innerHTML = "(" + aDepreciation + ")";
             document.getElementById('Dout3_4').innerHTML = netvalue;
         }
