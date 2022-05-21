@@ -4,7 +4,8 @@ function calculate(form) {
     var dAmount=document.forms["form"]["D_amount"].value;
     var pRate=document.forms["form"]["P_rate"].value;
     var pAmount=document.forms["form"]["P_amount"].value;
-    var Open=document.forms["form"]["DRadios"].value;
+    var Open1=document.forms["form"]["DRadios1"].checked;
+    var Open2=document.forms["form"]["DRadios2"].checked;
     // var NotOpenB=document.forms["form"]["DRadios2"].value;
     var provision=(dAmount*pRate)/100;
     var proB=pAmount-provision;
@@ -13,7 +14,7 @@ function calculate(form) {
     
         document.getElementById('dout1').innerHTML = "Debtor Name :   "+debtorName;
     
-    if (Open=="noB"){
+    if (Open2==true){
         //No open balance
        
         document.getElementById('dout2_1').innerHTML = " Provision for doubtful debt :  ";
@@ -25,7 +26,7 @@ function calculate(form) {
         document.getElementById('dout3_4').innerHTML ="("+provision+")";
         document.getElementById('dout3_5').innerHTML =dAmount-provision;
     
-    }else if (Open=="B"){
+    }else if (Open1==true){
        //with open balance
         if(proB>0){
             //when opening balance greater than
@@ -112,8 +113,9 @@ function row1Check(){
 function isEmpty(){
     var row2Value=document.getElementById('D_amount').value;
     var row3Value=document.getElementById('P_rate').value;
-    var radioValue=document.getElementById('DRadios').value;
-    document.write(radioValue);
+    var radioValue1=document.getElementById('DRadios1').checked;
+    var radioValue2=document.getElementById('DRadios2').checked;
+
     var numbers = /^[0-9]+$/;
 
     if(row2Value!=""){    
@@ -121,8 +123,8 @@ function isEmpty(){
             document.getElementById('rowb').innerHTML=" "; 
             if(row3Value!=""){    
                 if(row3Value.match(numbers)){
-                    document.getElementById('rowc').innerHTML=" ";  
-                    if(radioValue=="noB" || radioValue=='B'){    
+                    document.getElementById('rowc').innerHTML=" ";
+                    if(radioValue1==true || radioValue2==true){    
                         document.getElementById('rowd').innerHTML=" ";  
                         document.getElementById("btn").disabled = false; 
                     }else{
@@ -135,6 +137,11 @@ function isEmpty(){
             }else{
                 document.getElementById("btn").disabled = true;
                 document.getElementById('rowc').innerHTML="**Required";  
+                if(radioValue1==true || radioValue2==true){    
+                    document.getElementById('rowd').innerHTML=" ";  
+                }else{
+                    document.getElementById('rowd').innerHTML="**Required--Select";
+                } 
 
             }
         }    
@@ -146,14 +153,24 @@ function isEmpty(){
         document.getElementById('rowb').innerHTML="**Required";
         if(row3Value!=""){    
             if(row3Value.match(numbers)){
-                document.getElementById('rowc').innerHTML=" ";  
+                document.getElementById('rowc').innerHTML=" ";
+                if(radioValue1==true || radioValue2==true){    
+                    document.getElementById('rowd').innerHTML=" ";  
+                }else{
+                    document.getElementById('rowd').innerHTML="**Required--Select";
+                }  
             }else{
                 document.getElementById('rowc').innerHTML="Please enter numbers!";
             }
                
         }else{
             document.getElementById("btn").disabled = true;
-            document.getElementById('row4').innerHTML="**Required";  
+            document.getElementById('rowc').innerHTML="**Required";  
+            if(radioValue1==true || radioValue2==true){    
+                document.getElementById('rowd').innerHTML=" ";  
+            }else{
+                document.getElementById('rowd').innerHTML="**Required--Select1";
+            } 
 
         }
     }
