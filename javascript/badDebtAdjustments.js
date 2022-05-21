@@ -69,45 +69,106 @@ function calculate(form) {
 
 
 function row1Check(){
-    var row1Value=document.getElementById('D_name');
+    var row1Value=document.getElementById('D_name').value;
     var letters = /^[A-Za-z]+$/;
-    if(row1Value.value.match(letters)){
+    if (row1Value!=""){
+        if(row1Value.match(letters)){
+            document.getElementById('rowa').innerHTML="";
+        
+        }else{
+            document.getElementById('rowa').innerHTML="please enter letters!";
+            //document.getElementById('row1').innerHTML("");
+            
+        }
+    }else{
         document.getElementById('rowa').innerHTML="";
-       
-    }else{
-        document.getElementById('rowa').innerHTML="please enter letters!";
-        //document.getElementById('row1').innerHTML("");
-        
     }
-    
 }
 
 
-function row2Check(){
-    var row2Value=document.getElementById('D_amount');
+// function row2Check(){
+//     var row2Value=document.getElementById('D_amount').value;
+//     var row3Value=document.getElementById('P_rate').value;
+//     var numbers = /^[0-9]+$/;
+//     if(row2Value.value.match(numbers)){
+//         document.getElementById('rowb').innerHTML="";
+//         if(row3Value.value.match(numbers)){
+//             document.getElementById('rowc').innerHTML="";
+           
+//         }else{
+//             document.getElementById('rowc').innerHTML="please enter numbers!";
+//             //document.getElementById('row1').innerHTML("");
+            
+//         }
+       
+//     }else{
+//         document.getElementById('rowb').innerHTML="please enter numbers!";
+//         //document.getElementById('row1').innerHTML("");
+        
+//     }
+    
+// }
+
+function isEmpty(){
+    var row2Value=document.getElementById('D_amount').value;
+    var row3Value=document.getElementById('P_rate').value;
+    var radioValue=document.getElementById('DRadios').value;
+    document.write(radioValue);
     var numbers = /^[0-9]+$/;
-    if(row2Value.value.match(numbers)){
-        document.getElementById('rowb').innerHTML="";
-       
-    }else{
-        document.getElementById('rowb').innerHTML="please enter numbers!";
-        //document.getElementById('row1').innerHTML("");
-        
-    }
-    
-}
 
+    if(row2Value!=""){    
+        if(row2Value.match(numbers)){
+            document.getElementById('rowb').innerHTML=" "; 
+            if(row3Value!=""){    
+                if(row3Value.match(numbers)){
+                    document.getElementById('rowc').innerHTML=" ";  
+                    if(radioValue=="noB" || radioValue=='B'){    
+                        document.getElementById('rowd').innerHTML=" ";  
+                        document.getElementById("btn").disabled = false; 
+                    }else{
+                        document.getElementById('rowd').innerHTML="**Required--Select";
+                    }
+                }else{
+                    document.getElementById('rowc').innerHTML="Please enter numbers!";
+                }
+               
+            }else{
+                document.getElementById("btn").disabled = true;
+                document.getElementById('rowc').innerHTML="**Required";  
 
-function row3Check(){
-    var row3Value=document.getElementById('P_rate');
-    var numbers = /^[0-9]+$/;
-    if(row3Value.value.match(numbers)){
-        document.getElementById('rowc').innerHTML="";
-       
+            }
+        }    
+        else{
+             document.getElementById('rowb').innerHTML="Please enter numbers!";
+        }
     }else{
-        document.getElementById('rowc').innerHTML="please enter numbers!";
-        //document.getElementById('row1').innerHTML("");
-        
+        document.getElementById("btn").disabled = true;
+        document.getElementById('rowb').innerHTML="**Required";
+        if(row3Value!=""){    
+            if(row3Value.match(numbers)){
+                document.getElementById('rowc').innerHTML=" ";  
+            }else{
+                document.getElementById('rowc').innerHTML="Please enter numbers!";
+            }
+               
+        }else{
+            document.getElementById("btn").disabled = true;
+            document.getElementById('row4').innerHTML="**Required";  
+
+        }
     }
+ }
+
+// function row3Check(){
+//     var row3Value=document.getElementById('P_rate');
+//     var numbers = /^[0-9]+$/;
+//     if(row3Value.value.match(numbers)){
+//         document.getElementById('rowc').innerHTML="";
+       
+//     }else{
+//         document.getElementById('rowc').innerHTML="please enter numbers!";
+//         //document.getElementById('row1').innerHTML("");
+        
+//     }
     
-}
+// }

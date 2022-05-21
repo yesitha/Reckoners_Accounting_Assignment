@@ -120,12 +120,12 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Amount" class="form-control" id="D_amount" onkeyup="row2Check()">
+                      <input type="text" placeholder="Amount" class="form-control" id="D_amount" onkeyup="isEmpty()">
                     </div>
 
                     <!--Added constraints-->
                     <div style="height:20px;">
-                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="rowb"></p>
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="rowb">**Required</p>
                     </div>                    
 
                     <div class="input-group">
@@ -136,12 +136,12 @@
                           "></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Provision Rate" class="form-control" id="P_rate" onkeyup="row3Check()">
+                      <input type="text" placeholder="Provision Rate" class="form-control" id="P_rate" onkeyup="isEmpty()">
                     </div>
 
                     <!--Added constraints-->
                     <div style="height:20px;">
-                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="rowc"></p>
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="rowc">**Required</p>
                     </div>                    
 
 
@@ -154,9 +154,13 @@
                       <p class="form-control">Opening Balance </p>  
                     </div> -->
                     <p class="text-muted" style="margin-left:0.5rem;">Did you have Opening Balance(provision)</p>
+                     <!--Added constraints-->
+                     <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;text-align: right;" id="rowd"></p>
+                    </div>  
                     <div class="form-check form-check-radio" style="margin: 0.5rem;">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="DRadios" value="B" onclick="fun1()" >
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="DRadios" value="B" onclick="fun1()" onclick="isEmpty()" >
                         <span class="form-check-sign"></span>
                         Yes
                       </label>
@@ -164,7 +168,7 @@
                     </div>
                     <div class="form-check form-check-radio" style="margin: 0.5rem;">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="DRadios" value="noB" onclick="fun2()" >
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="DRadios" value="noB" onclick="fun2()" onclick="isEmpty()">
                         <span class="form-check-sign"></span>
                        No
                       </label>
@@ -188,7 +192,7 @@
                     </div>
                   </form>
                 </div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2"  onclick="return calculate(form)">
+                <button class="btn btn-success" id="btn" data-toggle="modal" data-target="#myModal2" disabled onclick="return calculate(form)">
                   Calculate
                 </button>
                 <br>
