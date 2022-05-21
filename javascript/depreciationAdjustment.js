@@ -118,4 +118,20 @@ function calculate(form) {
 }
 
 
-
+function rowACheck(){
+    var row1Value=document.getElementById('A_name').value;
+    var letters = /^[A-Za-z]+$/;
+    if(row1Value!=""){
+        if(row1Value.match(letters)){
+            document.getElementById('rowA').innerHTML="";
+        
+        }else{
+            document.getElementById('rowA').innerHTML="please enter letters!";
+            //document.getElementById('row1').innerHTML("");
+            
+        }
+    }else{
+        document.getElementById('rowA').innerHTML="";
+    }
+    
+}
