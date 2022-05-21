@@ -122,6 +122,10 @@
                       </div>
                       <input type="text" id="datepicker" class="form-control datepicker" placeholder="Paid Date" data-datepicker-color="primary">
                     </div>
+                           <!--Added constraints-->
+                <div style="height:20px;">
+                  <p style="margin-left:70px;font-size: 11px;color: #FF00FF;font-weight:600" ></p>
+               </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -133,7 +137,7 @@
 
                      <!--Added constraints-->
                      <div style="height:20px;">
-                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="row8"></p>
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="row8">**Required</p>
                     </div>
 
                     <div class="input-group">
@@ -142,17 +146,17 @@
                           <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Monthly Payable Amount" class="form-control" id="E_Mamount" onkeyup="row4Check()" disabled>
+                      <input type="text" placeholder="Monthly Payable Amount" class="form-control" id="E_Mamount" onkeyup="isEmpty()">
                     </div>
+                       <!--Added constraints-->
+                <div style="height:20px;">
+                  <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="row9">**Required</p>
+               </div>
                   </form>
                 </div>
 
-               <!--Added constraints-->
-                <div style="height:20px;">
-                   <p style="margin-left:70px;font-size: 11px;color: #FF00FF;font-weight:600" id="row9"></p>
-                </div>
                 
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2" onclick="return calculate(form)">
+                <button class="btn btn-success" id="btn" data-toggle="modal" data-target="#myModal2" disabled onclick="return calculate(form)">
                   Calculate
                 </button>
                 <br>

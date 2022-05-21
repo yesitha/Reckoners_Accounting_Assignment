@@ -33,45 +33,93 @@ function calculate(form) {
    
 }
 
+// function isEmpty(){
+//     var paidAmount=document.getElementById('E_amount');
+//     var numbers = /^[0-9]+$/;
+//     if(paidAmount!=" "){
+//         document.getElementById('E_Mamount').removeAttribute("disabled");
+//         if(paidAmount.value.match(numbers)){
+//             document.getElementById('row8').innerHTML="";  
+//         }else{
+//             document.getElementById('row8').innerHTML="Please enter numbers!";
+//         }
+//     }else{
+//         document.getElementById('row8').innerHTML="xxx";
+//         document.getElementById("E_Mamount").disabled = true;
+//     }
+// }
+
 function isEmpty(){
-    var paidAmount=document.getElementById('E_amount');
+    var paidAmount=document.getElementById('E_amount').value;
+    var paidMAmount=document.getElementById('E_Mamount').value;
     var numbers = /^[0-9]+$/;
-    if(paidAmount!=" "){
-        document.getElementById('E_Mamount').removeAttribute("disabled");
-        if(paidAmount.value.match(numbers)){
-            document.getElementById('row8').innerHTML="";  
-        }else{
-            document.getElementById('row8').innerHTML="Please enter numbers!";
+
+    if(paidAmount!=""){    
+        if(paidAmount.match(numbers)){
+            document.getElementById('row8').innerHTML=" "; 
+            if(paidMAmount!=""){    
+                if(paidMAmount.match(numbers)){
+                    document.getElementById('row9').innerHTML=" ";  
+                    document.getElementById("btn").disabled = false; 
+                }else{
+                    document.getElementById('row9').innerHTML="Please enter numbers!";
+                }
+               
+            }else{
+                document.getElementById("btn").disabled = true;
+                document.getElementById('row9').innerHTML="**Required";  
+
+            }
+        }    
+        else{
+             document.getElementById('row8').innerHTML="Please enter numbers!";
         }
     }else{
-        document.getElementById('row8').innerHTML="xxx";
-        document.getElementById("E_Mamount").disabled = true;
+        document.getElementById("btn").disabled = true;
+        document.getElementById('row8').innerHTML="**Required";
+        if(paidMAmount!=""){    
+            if(paidMAmount.match(numbers)){
+                document.getElementById('row9').innerHTML=" ";  
+            }else{
+                document.getElementById('row9').innerHTML="Please enter numbers!";
+            }
+               
+        }else{
+            document.getElementById("btn").disabled = true;
+            document.getElementById('row9').innerHTML="**Required";  
+
+        }
     }
-}
+ }
+
 function row1Check(){
-    var row1Value=document.getElementById('E_name');
+    var row1Value=document.getElementById('E_name').value;
     var letters = /^[A-Za-z]+$/;
-    if(row1Value.value.match(letters)){
+    if(row1Value!=""){
+        if(row1Value.match(letters)){
+            document.getElementById('row5').innerHTML="";
+        
+        }else{
+            document.getElementById('row5').innerHTML="please enter letters!";
+            //document.getElementById('row1').innerHTML("");
+            
+        }
+    }else{
         document.getElementById('row5').innerHTML="";
-       
-    }else{
-        document.getElementById('row5').innerHTML="please enter letters!";
-        //document.getElementById('row1').innerHTML("");
-        
     }
     
 }
-function row4Check(){
-    var row4Value=document.getElementById('E_Mamount');
-    var numbers = /^[0-9]+$/;
-    if(row4Value.value.match(numbers)){
-        document.getElementById('row9').innerHTML="";
+// function row4Check(){
+//     var row4Value=document.getElementById('E_Mamount');
+//     var numbers = /^[0-9]+$/;
+//     if(row4Value.value.match(numbers)){
+//         document.getElementById('row9').innerHTML="";
        
-    }else{
-        document.getElementById('row9').innerHTML="please enter numbers!";
-        //document.getElementById('row1').innerHTML("");
+//     }else{
+//         document.getElementById('row9').innerHTML="please enter numbers!";
+//         //document.getElementById('row1').innerHTML("");
         
-    }
+//     }
     
-}
+// }
 
