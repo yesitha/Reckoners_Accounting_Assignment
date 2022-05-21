@@ -34,43 +34,76 @@ function calculate(form) {
 }
 
 function isEmpty(){
-    var receivedAmount=document.getElementById('I_amount');
+    var receivedAmount=document.getElementById('I_amount').value;
+    var receivedMAmount=document.getElementById('I_Mamount').value;
     var numbers = /^[0-9]+$/;
-    if(receivedAmount!=" "){
-        document.getElementById('I_Mamount').removeAttribute("disabled");
-        if(receivedAmount.value.match(numbers)){
-            document.getElementById('row2').innerHTML="";  
-        }else{
-            document.getElementById('row2').innerHTML="Please enter numbers!";
+
+    if(receivedAmount!=""){    
+        if(receivedAmount.match(numbers)){
+            document.getElementById('row2').innerHTML=" "; 
+            if(receivedMAmount!=""){    
+                if(receivedMAmount.match(numbers)){
+                    document.getElementById('row4').innerHTML=" ";  
+                    document.getElementById("btn").disabled = false; 
+                }else{
+                    document.getElementById('row4').innerHTML="Please enter numbers!";
+                }
+               
+            }else{
+                document.getElementById("btn").disabled = true;
+                document.getElementById('row4').innerHTML="**Required";  
+
+            }
+        }    
+        else{
+             document.getElementById('row2').innerHTML="Please enter numbers!";
         }
     }else{
-        document.getElementById('row2').innerHTML="xxx";
-        document.getElementById("I_Mamount").disabled = true;
+        document.getElementById("btn").disabled = true;
+        document.getElementById('row2').innerHTML="**Required";
+        if(receivedMAmount!=""){    
+            if(receivedMAmount.match(numbers)){
+                document.getElementById('row4').innerHTML=" ";  
+            }else{
+                document.getElementById('row4').innerHTML="Please enter numbers!";
+            }
+               
+        }else{
+            document.getElementById("btn").disabled = true;
+            document.getElementById('row4').innerHTML="**Required";  
+
+        }
     }
-}
+ }
+
+
 function row1Check(){
-    var row1Value=document.getElementById('I_name');
+    var row1Value=document.getElementById('I_name').value;
     var letters = /^[A-Za-z]+$/;
-    if(row1Value.value.match(letters)){
+    if(row1Value!=""){
+        if(row1Value.match(letters)){
+            document.getElementById('row1').innerHTML="";
+        
+        }else{
+            document.getElementById('row1').innerHTML="please enter letters!";
+            //document.getElementById('row1').innerHTML("");
+            
+        }
+    }else{
         document.getElementById('row1').innerHTML="";
-       
-    }else{
-        document.getElementById('row1').innerHTML="please enter letters!";
-        //document.getElementById('row1').innerHTML("");
-        
     }
-    
-}
-function row4Check(){
-    var row4Value=document.getElementById('I_Mamount');
-    var numbers = /^[0-9]+$/;
-    if(row4Value.value.match(numbers)){
-        document.getElementById('row4').innerHTML="";
-       
-    }else{
-        document.getElementById('row4').innerHTML="please enter numbers!";
-        //document.getElementById('row1').innerHTML("");
         
-    }
-    
 }
+// function row4Check(){
+//     var row4Value=document.getElementById('I_Mamount');
+//     var numbers = /^[0-9]+$/;
+//     if(row4Value.value.match(numbers)){
+//         document.getElementById('row4').innerHTML="";
+       
+//     }else{
+//         document.getElementById('row4').innerHTML="please enter numbers!";
+//         //document.getElementById('row1').innerHTML("");
+        
+//     }
+    
+// }

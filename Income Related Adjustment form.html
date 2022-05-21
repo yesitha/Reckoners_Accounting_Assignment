@@ -135,7 +135,7 @@
                     </div>
                      <!--Added constraints-->
                      <div style="height:20px;">
-                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="row2"></p>
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="row2">** Required</p>
                     </div>
 
                     <div class="input-group">
@@ -144,16 +144,17 @@
                           <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Monthly Receivable Amount" class="form-control" id="I_Mamount" onkeyup="row4Check()"  disabled >
+                      <input type="text" placeholder="Monthly Receivable Amount" class="form-control" id="I_Mamount" onkeyup="isEmpty()"  >
                     </div>
+                    <!--Added constraints-->
+                 <div style="height:20px;">
+                  <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="row4">**Required</p>
+                </div>
                   </form>
                 </div>
-                 <!--Added constraints-->
-                 <div style="height:20px;">
-                  <p style="margin-left:70px;font-size: 11px;color: #FF00FF;font-weight:600" id="row4"></p>
-                </div>
+               
 
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2"   onclick="return calculate(form)">
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2"  id="btn" disabled  onclick="return calculate(form)">
                   Calculate
                 </button>
                 <br>
