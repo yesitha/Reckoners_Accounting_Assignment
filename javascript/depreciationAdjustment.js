@@ -72,17 +72,24 @@ function calculate(form) {
     else if(method == "reducing"){
        
         var depreciation = 0;
-        var a=aValue;
-        var depreciationPeryear=0;
-        // var rate1=;
-        // // var rate1=(1 - (residual / aValue));
-        // var rate2=10^ (1 / n);
+        var a=document.forms["form"]["A_value"].value;
+         var depreciationPerDay=0;
+        
+        // var rate1=(1 - (residual / aValue));
+        // var rate2=rate1^ (1 / ulifeinDays);
         // var rate3=rate2*100;
 
-        for (let i = 0; i < ulifeinDays; i++) {
-            var depreciationPeryear = a * ((1 - (residual / aValue)) ** (1 / ulifeinDays)) * 100;
-            depreciation = depreciation + depreciationPeryear;
-            a=a-depreciationPeryear;
+
+        var rate= ((1 - ((residual / aValue)) ** (1 / ulifeinDays)) * 100);
+        
+      
+        for (var i = 0; i < pdays; i++) {
+             depreciationPerDay = a *rate/100;
+            
+            depreciation = depreciation + depreciationPerDay;
+            
+    
+            a=a-depreciationPerDay;
         }
         var netvalue = aValue - depreciation;
         // var ulifeinDays = ULife * 365;
@@ -95,12 +102,12 @@ function calculate(form) {
         if (ulifeinDays >= pdays) {
 
             document.getElementById('Dout2_1').innerHTML = assetName + " depreciation :  ";
-            document.getElementById('Dout2_2').innerHTML = "Rs." + depreciation;
+            document.getElementById('Dout2_2').innerHTML = "Rs." + roundToTwo(depreciation);
 
             document.getElementById('Dout3_1').innerHTML = assetName;
             document.getElementById('Dout3_2').innerHTML = aValue;
-            document.getElementById('Dout3_3').innerHTML = "(" + depreciation + ")";
-            document.getElementById('Dout3_4').innerHTML = netvalue;
+            document.getElementById('Dout3_3').innerHTML = "(" + roundToTwo(depreciation) + ")";
+            document.getElementById('Dout3_4').innerHTML = roundToTwo(netvalue);
         }
         else if (ulifeinDays < pdays) {
             document.getElementById('Dout2').innerHTML = "#........Your given evaluated time period is greater than the useful life of " + assetName + " .....#";
@@ -134,4 +141,7 @@ function rowACheck(){
         document.getElementById('rowA').innerHTML="";
     }
     
+}
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
 }
