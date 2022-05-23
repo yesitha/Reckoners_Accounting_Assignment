@@ -105,12 +105,14 @@
                           <i class="tim-icons icon-bulb-63"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Asset Name" id="A_name" onclick="fun()" onkeyup="rowACheck()">
-                                     <!--Added constraints-->
-                <div style="height:20px;">
-                  <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight:600" id="rowA"></p>
-               </div>
+                      <input type="text" class="form-control" placeholder="Asset Name" id="A_name" onclick="fun()" onkeyup="assetNameCheck()">
                     </div>
+
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="dep1"></p>
+                    </div>
+
                     <small id="ss" style="color:pink;"></small>
                     <script>
                       function fun(){
@@ -123,16 +125,12 @@
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Asset value" class="form-control" id="A_value">
+                      <input type="text" placeholder="Asset value" class="form-control" id="A_value" onkeyup="assetValueCheck()">
                     </div>
                     
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <i class="tim-icons icon-calendar-60"></i>
-                        </div>
-                      </div>
-                      <input type="text" id="datepicker1" class="form-control datepicker" placeholder="Purchase Date" data-datepicker-color="primary">
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="dep2">**Required</p>
                     </div>
 
                     <div class="input-group">
@@ -141,8 +139,27 @@
                           <i class="tim-icons icon-calendar-60"></i>
                         </div>
                       </div>
-                      <input type="text" id="datepicker2" class="form-control datepicker" placeholder="Evaluate Date" data-datepicker-color="primary">
+                      <input type="text" id="datepicker1" class="form-control datepicker" placeholder="Purchase Date" data-datepicker-color="primary"  onclick="purchaseDateCheck()" >
                     </div>
+
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="date1">**Required</p>
+                    </div>                    
+
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="tim-icons icon-calendar-60"></i>
+                        </div>
+                      </div>
+                      <input type="text" id="datepicker2" class="form-control datepicker" placeholder="Evaluate Date" data-datepicker-color="primary" onclick="evaluateDateCheck()">
+                    </div>
+
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="date2">**Required</p>
+                    </div>                    
 
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -150,15 +167,26 @@
                           <i class="tim-icons icon-heart-2"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Useful Life (Years)" id="usefulLife">
+                      <input type="text" class="form-control" placeholder="Useful Life (Years)" id="usefulLife" onkeyup="usefulLifeCheck()">
                     </div>
+
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="dep3">**Required</p>
+                    </div>
+
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <div class="input-group-text">
                           <i class="tim-icons icon-coins"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Residual value" class="form-control" id="Rvv">
+                      <input type="text" placeholder="Residual value" class="form-control" id="Rvv" onkeyup="residualValueCheck()">
+                    </div>
+
+                    <!--Added constraints-->
+                    <div style="height:20px;">
+                      <p style="margin-left:54px;font-size: 11px;color: #FF00FF;font-weight: 600;" id="dep4">**Required</p>
                     </div>
 
                     <!-- <div class="input-group">
@@ -198,10 +226,10 @@
                   
                   
 
-
+                  <script>calculateButton();</script>
                   </form>
                 </div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#myModal2" onclick="return calculate(form)" >
+                <button class="btn btn-success" id="depBtn" data-toggle="modal" data-target="#myModal2" disabled onclick="return calculate(form)" >
                   Calculate
                 </button>
                 <br>

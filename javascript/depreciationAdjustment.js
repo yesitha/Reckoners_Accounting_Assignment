@@ -124,24 +124,191 @@ function calculate(form) {
 
 }
 
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
+}
+
 
 function rowACheck(){
     var row1Value=document.getElementById('A_name').value;
     var letters = /^[A-Za-z]+$/;
-    if(row1Value!=""){
-        if(row1Value.match(letters)){
-            document.getElementById('rowA').innerHTML="";
-        
+    if(assetName!=""){
+        if(assetName.match(letters)){
+           document.getElementById('dep1').innerHTML="";
         }else{
-            document.getElementById('rowA').innerHTML="please enter letters!";
-            //document.getElementById('row1').innerHTML("");
-            
-        }
+        document.getElementById('dep1').innerHTML="please enter letters!";
+       }
     }else{
-        document.getElementById('rowA').innerHTML="";
+
+        document.getElementById('dep1').innerHTML="";
     }
     
 }
-function roundToTwo(num) {
-    return +(Math.round(num + "e+2")  + "e-2");
+
+function assetValueCheck(){
+    var assetValue=document.getElementById('A_value').value;
+    var usefulLife=document.getElementById('usefulLife').value;
+    var residualValue=document.getElementById('Rvv').value;
+    var purchaseDate = document.forms["form"]["datepicker1"].value;
+    var evaluateDate = document.forms["form"]["datepicker2"].value;
+    var d1 = new Date(purchaseDate);
+    var d2 = new Date(evaluateDate);    
+    var numbers = /^[0-9]+$/;
+
+    if(assetValue!=""){    
+        if(assetValue.match(numbers)){
+            document.getElementById('dep2').innerHTML=" ";
+            //check usefullife and residual value are valid
+            if((usefulLife!=="" && usefulLife.match(numbers))&&(residualValue!="" &&residualValue.match(numbers))){
+                //check purchase date and evaluate date are valid
+                if(d1!="Invalid Date" && d2!="Invalid Date"){
+                    //if all essential records are valid enable the calculate button
+                    document.getElementById("depBtn").disabled = false;
+                }
+
+            }else{
+                document.getElementById("depBtn").disabled = true;
+            }
+             
+        }else{
+            document.getElementById('dep2').innerHTML="Please enter numbers!";
+            document.getElementById("depBtn").disabled = true;
+        }
+               
+    }else{
+            document.getElementById('dep2').innerHTML="**Required"; 
+            document.getElementById("depBtn").disabled = true; 
+    }
+}   
+ 
+
+function usefulLifeCheck(){
+    var assetValue=document.getElementById('A_value').value;
+    var usefulLife=document.getElementById('usefulLife').value;
+    var residualValue=document.getElementById('Rvv').value;
+    var purchaseDate = document.forms["form"]["datepicker1"].value;
+    var evaluateDate = document.forms["form"]["datepicker2"].value;
+    var d1 = new Date(purchaseDate);
+    var d2 = new Date(evaluateDate);    
+    var numbers = /^[0-9]+$/;
+
+    if(usefulLife!=""){    
+        if(usefulLife.match(numbers)){
+            document.getElementById('dep3').innerHTML=" ";  
+            //check asset value and residual value are valid
+            if((assetValue!=="" && assetValue.match(numbers))&&(residualValue!="" &&residualValue.match(numbers))){
+                //check purchase date and evaluate date are valid
+                if(d1!="Invalid Date" && d2!="Invalid Date"){
+                    //if all essential records are valid enable the calculate button
+                    document.getElementById("depBtn").disabled = false;
+                }                
+            }else{
+                document.getElementById("depBtn").disabled = true;
+            }              
+        }else{
+            document.getElementById('dep3').innerHTML="Please enter numbers!";
+            document.getElementById("depBtn").disabled = true;
+        }
+               
+    }else{
+        document.getElementById('dep3').innerHTML="**Required"; 
+        document.getElementById("depBtn").disabled = true; 
+    }
 }
+
+
+function purchaseDateCheck(){
+    var assetValue=document.getElementById('A_value').value;
+    var usefulLife=document.getElementById('usefulLife').value;
+    var residualValue=document.getElementById('Rvv').value;
+    var purchaseDate = document.forms["form"]["datepicker1"].value;
+    var evaluateDate = document.forms["form"]["datepicker2"].value;
+    var d1 = new Date(purchaseDate);
+    var d2 = new Date(evaluateDate);
+    var numbers = /^[0-9]+$/;
+
+    console.log(d1);
+    if(d1!="Invalid Date"){    
+        document.getElementById('date1').innerHTML=" ";  
+        //check asset value, residual value and useful life are valid 
+        if((assetValue!=="" && assetValue.match(numbers))&&(usefulLife!="" &&usefulLife.match(numbers))&&(residualValue!="" &&residualValue.match(numbers))){
+            //check evaluate date is valid
+            console.log("bf");
+            if(d2!="Invalid Date"){
+                //if all essential records are valid enable the calculate button                
+                document.getElementById("depBtn").disabled = false;    
+                console.log("rf");            
+            }
+            //document.getElementById("depBtn").disabled = true;
+        }                 
+    }else{
+        document.getElementById('date1').innerHTML="**Select the Purchase date";  
+        document.getElementById("depBtn").disabled = true;
+    }
+}
+
+function evaluateDateCheck(){
+    var assetValue=document.getElementById('A_value').value;
+    var usefulLife=document.getElementById('usefulLife').value;
+    var residualValue=document.getElementById('Rvv').value;
+    var purchaseDate = document.forms["form"]["datepicker1"].value;
+    var evaluateDate = document.forms["form"]["datepicker2"].value;
+    var d1 = new Date(purchaseDate);
+    var d2 = new Date(evaluateDate);
+    var numbers = /^[0-9]+$/;
+
+    if(d2!="Invalid Date"){    
+        document.getElementById('date2').innerHTML=" "; 
+        //check asset value, residual value and useful life are valid
+        if((assetValue!=="" && assetValue.match(numbers))&&(usefulLife!="" &&usefulLife.match(numbers))&&(residualValue!="" &&residualValue.match(numbers))){
+            //check purchase date is valid
+            console.log("before");
+            if(d1!="Invalid Date"){
+                //if all essential records are valid enable the calculate button                
+                document.getElementById("depBtn").disabled = false;    
+                console.log("rafter");            
+            }
+            //document.getElementById("depBtn").disabled = true;
+        }        
+    }else{
+        document.getElementById('date2').innerHTML="**Select the Evaluate date";
+        document.getElementById("depBtn").disabled = true;  
+    }
+}
+
+function residualValueCheck(){
+    var assetValue=document.getElementById('A_value').value;
+    var usefulLife=document.getElementById('usefulLife').value;
+    var residualValue=document.getElementById('Rvv').value;
+    var purchaseDate = document.forms["form"]["datepicker1"].value;
+    var evaluateDate = document.forms["form"]["datepicker2"].value;
+    var d1 = new Date(purchaseDate);
+    var d2 = new Date(evaluateDate);     
+    var numbers = /^[0-9]+$/;
+
+    if(residualValue!=""){    
+        if(residualValue.match(numbers)){
+            document.getElementById('dep4').innerHTML=" ";
+            //chech asset value and usefullife are valid
+            if((assetValue!=="" && assetValue.match(numbers))&&(usefulLife!="" &&usefulLife.match(numbers))){
+                //check purchase date and evaluate date are valid
+                if(d1!="Invalid Date" && d2!="Invalid Date"){
+                    //if all essential records are valid enable the calculate button
+                    document.getElementById("depBtn").disabled = false;
+                }
+            }else{
+                document.getElementById("depBtn").disabled = true;
+            }             
+            
+        }else{
+            document.getElementById('dep4').innerHTML="Please enter numbers!";
+            document.getElementById("depBtn").disabled = true;
+        }
+               
+    }else{
+            document.getElementById('dep4').innerHTML="**Required"; 
+            document.getElementById("depBtn").disabled = true; 
+    }
+}
+
+
