@@ -129,11 +129,11 @@ function roundToTwo(num) {
 }
 
 
-function rowACheck(){
+function assetNameCheck(){
     var row1Value=document.getElementById('A_name').value;
     var letters = /^[A-Za-z]+$/;
-    if(assetName!=""){
-        if(assetName.match(letters)){
+    if(row1Value!=""){
+        if(row1Value.match(letters)){
            document.getElementById('dep1').innerHTML="";
         }else{
         document.getElementById('dep1').innerHTML="please enter letters!";
